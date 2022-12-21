@@ -1,8 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.GetInfoScreen">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_app_name"
+            style="@style/Widget.BinInfo.TextView.ToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_navigate_to_history"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="12dp"
+            app:icon="@drawable/icon_history" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_retry"
+        style="@style/TextAppearance.AppCompat.Title.Inverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="@string/retry"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bin_info_views"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_instruction"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/middle_margin"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:text="@string/instruction"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/middle_margin"
+            android:layout_marginTop="@dimen/middle_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_instruction">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_bin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint"
+                android:inputType="number"
+                android:singleLine="true" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_get_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/middle_margin"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:text="@string/get_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_layout"/>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_brand_title"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/brand"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_get_info" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_brand_value"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toEndOf="@+id/text_brand_title"
+            app:layout_constraintTop_toTopOf="@+id/text_brand_title"
+            tools:text="VISA" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_bank_title"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bank"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_brand_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_bank_value"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/text_bank_title"
+            app:layout_constraintTop_toTopOf="@+id/text_bank_title"
+            tools:text="World Bank" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_bank_site_title"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bank_site"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_bank_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_bank_site_value"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/text_bank_site_title"
+            app:layout_constraintTop_toTopOf="@+id/text_bank_site_title"
+            tools:text="www.bank.com" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_bank_phone_title"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bank_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_bank_site_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_bank_phone_value"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/text_bank_phone_title"
+            app:layout_constraintTop_toTopOf="@+id/text_bank_phone_title"
+            tools:text="+342151513" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_country_title"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/country"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_bank_phone_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_country_value"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/text_country_title"
+            app:layout_constraintTop_toTopOf="@+id/text_country_title"
+            tools:text="Vakanda" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">BinInfo</string>
+    <string name="retry">RETRY</string>
+    <string name="get_info">Get Info</string>
+    <string name="instruction">Enter BIN code(first 6 digits of card number):</string>
+    <string name="hint">Enter BIN numbers </string>
+    <string name="brand">Card brand: </string>
+    <string name="bank_site">Bank site: </string>
+    <string name="bank">Bank: </string>
+    <string name="bank_phone">Bank phone: </string>
+    <string name="country">Country: </string>
 </resources>
