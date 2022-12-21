@@ -3,6 +3,7 @@ package com.bininfo.di
 import com.bininfo.data.BaseBinInfoRepository
 import com.bininfo.data.remote.RemoteDataSource
 import com.bininfo.domain.BinInfoRepository
+import com.bininfo.domain.GetBinInfoUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,4 +18,7 @@ interface ModuleForInterfaces {
 
     @Binds
     fun provideRemoteDataSource(implementation: RemoteDataSource.Base): RemoteDataSource
+
+    @Binds
+    fun provideGetBinInfoUseCase(implementation: GetBinInfoUseCase.Base): GetBinInfoUseCase
 }
