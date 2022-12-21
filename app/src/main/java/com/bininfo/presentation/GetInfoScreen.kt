@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.bininfo.R
 import com.bininfo.databinding.FragmentGetInfoScreenBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
 
     private var _binding: FragmentGetInfoScreenBinding? = null
