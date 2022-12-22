@@ -61,6 +61,8 @@ dependencies {
     //Lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
 
+    //Fragments
+    implementation("androidx.fragment:fragment-ktx:1.5.5")
 }
 
 kapt {

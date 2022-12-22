@@ -1,10 +1,10 @@
 package com.bininfo.data.remote
 
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface BinInfoService {
 
-    @GET("")
-    suspend fun getBinInfo( @Query("") bin: String): BinInfoResponse
+    @GET("/{bin}")
+    suspend fun getBinInfo( @Path("bin") bin: String): BinInfoResponse
 }

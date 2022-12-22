@@ -1,5 +1,6 @@
 package com.bininfo.data.remote
 
+import android.util.Log
 import com.bininfo.domain.BinInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -24,6 +25,7 @@ interface RemoteDataSource {
                 emit(ApiResult.Success(data))
             } catch (e: Exception) {
                 emit(ApiResult.Error(e))
+                Log.d("API_ERROR", e.message.toString())
             }
         }.flowOn(Dispatchers.IO)
     }

@@ -22,7 +22,6 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name" />
 
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_navigate_to_history"
             style="?android:attr/borderlessButtonStyle"
@@ -58,58 +57,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_instruction"
+        style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/middle_margin"
+        android:layout_marginTop="@dimen/middle_margin"
+        android:text="@string/instruction"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/middle_margin"
+        android:layout_marginTop="@dimen/middle_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_instruction">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_bin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint"
+            android:inputType="number"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_get_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/middle_margin"
+        android:layout_marginTop="@dimen/middle_margin"
+        android:text="@string/get_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_layout" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bin_info_views"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_instruction"
-            style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/middle_margin"
-            android:layout_marginTop="@dimen/middle_margin"
-            android:text="@string/instruction"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/middle_margin"
-            android:layout_marginTop="@dimen/middle_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_instruction">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_bin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint"
-                android:inputType="number"
-                android:singleLine="true" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_get_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/middle_margin"
-            android:layout_marginTop="@dimen/middle_margin"
-            android:text="@string/get_info"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_layout"/>
-
+        app:layout_constraintTop_toBottomOf="@id/button_get_info"
+        tools:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_brand_title"
@@ -118,7 +117,7 @@
             android:layout_height="wrap_content"
             android:text="@string/brand"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_get_info" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_brand_value"
