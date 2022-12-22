@@ -28,5 +28,6 @@
         <item name="android:letterSpacing">0.01</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="layout_constrainedWidth">true</item>
+        <item name="android:layout_marginStart">4dp</item>
     </style>
 </resources>
