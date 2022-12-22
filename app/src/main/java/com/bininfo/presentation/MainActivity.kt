@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.fragment_container_view, GetInfoScreen())
+                .replace(R.id.fragment_container_view, GetInfoScreen())
                 .commit()
         }
     }
