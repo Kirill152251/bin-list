@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -55,6 +56,7 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                             binding.apply {
                                 binInfoViews.isVisible = false
                                 buttonRetry.isVisible = false
+                                textErrorMsg.isVisible = false
                                 progressBar.isVisible = false
                             }
                         }
@@ -62,6 +64,7 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                             binding.apply {
                                 binInfoViews.isVisible = false
                                 buttonRetry.isVisible = false
+                                textErrorMsg.isVisible = false
                                 progressBar.isVisible = true
                             }
                         }
@@ -69,6 +72,7 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                             binding.apply {
                                 binInfoViews.isVisible = false
                                 buttonRetry.isVisible = true
+                                textErrorMsg.isVisible = true
                                 progressBar.isVisible = false
                             }
                         }
@@ -76,6 +80,7 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                             binding.apply {
                                 binInfoViews.isVisible = true
                                 buttonRetry.isVisible = false
+                                textErrorMsg.isVisible = false
                                 progressBar.isVisible = false
                                 textBrandValue.text = state.binInfo.brand
                                 textBankValue.text = state.binInfo.bank
@@ -96,7 +101,7 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                 viewModel.effect.collect { effect ->
                     when(effect) {
                         is GetInfoScreenEffect.ShowInputError -> {
-                            Snackbar.make(requireView(), effect.msg, 1500).show()
+                            Toast.makeText(requireContext(), effect.msg, Toast.LENGTH_LONG).show()
                         }
                     }
                 }

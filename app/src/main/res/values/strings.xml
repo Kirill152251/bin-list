@@ -12,4 +12,5 @@
     <string name="input_error_length">Incorrect number of digits</string>
     <string name="input_error_empty">You should enter BIN code</string>
     <string name="input_error_invalid_chars">BIN code should contain only digits</string>
+    <string name="internet_error_msg">There is no internet connection or problem with server :(</string>
 </resources>
