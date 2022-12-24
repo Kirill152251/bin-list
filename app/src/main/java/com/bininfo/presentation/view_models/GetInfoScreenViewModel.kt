@@ -75,7 +75,7 @@ class GetInfoScreenViewModel @Inject constructor(
         getBinInfoUseCase.getBinInfo(bin).collect { apiResult ->
             when (apiResult) {
                 is ApiResult.Error -> {
-                    _state.value = GetInfoScreenState.Error
+                    _state.value = GetInfoScreenState.Error(apiResult.e)
                 }
                 ApiResult.Loading -> {
                     _state.value = GetInfoScreenState.Loading
@@ -102,7 +102,7 @@ class GetInfoScreenViewModel @Inject constructor(
 sealed class GetInfoScreenState {
     object Idle : GetInfoScreenState()
     object Loading : GetInfoScreenState()
-    object Error : GetInfoScreenState()
+    data class Error(val e: Exception) : GetInfoScreenState()
     data class BinInfoState(val binInfo: BinInfo) : GetInfoScreenState()
 }
 

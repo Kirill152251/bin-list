@@ -52,12 +52,11 @@
         android:gravity="center"
         android:paddingHorizontal="@dimen/middle_margin"
         android:layout_marginBottom="@dimen/middle_margin"
+        android:text="@string/unknown_error"
         style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
-        android:text="@string/internet_error_msg"
         app:layout_constraintBottom_toTopOf="@+id/button_retry"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_retry"

@@ -17,9 +17,10 @@ import com.bininfo.presentation.view_models.GetInfoScreenEffect
 import com.bininfo.presentation.view_models.GetInfoScreenEvent
 import com.bininfo.presentation.view_models.GetInfoScreenState
 import com.bininfo.presentation.view_models.GetInfoScreenViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import java.net.UnknownHostException
 
 @AndroidEntryPoint
 class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
@@ -68,7 +69,20 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                                 progressBar.isVisible = true
                             }
                         }
-                        GetInfoScreenState.Error -> {
+                        is GetInfoScreenState.Error -> {
+                            when (state.e) {
+                                is HttpException -> {
+                                    if (state.e.code() == 404) {
+                                        binding.textErrorMsg.text =
+                                            getText(R.string.no_data_error_msg)
+                                    } else binding.textErrorMsg.text =
+                                        getText(R.string.error_server_is_not_response)
+                                }
+                                is UnknownHostException -> {
+                                    binding.textErrorMsg.text =
+                                        getText(R.string.no_internet_error_msg)
+                                }
+                            }
                             binding.apply {
                                 binInfoViews.isVisible = false
                                 buttonRetry.isVisible = true
@@ -99,7 +113,7 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.effect.collect { effect ->
-                    when(effect) {
+                    when (effect) {
                         is GetInfoScreenEffect.ShowInputError -> {
                             Toast.makeText(requireContext(), effect.msg, Toast.LENGTH_LONG).show()
                         }

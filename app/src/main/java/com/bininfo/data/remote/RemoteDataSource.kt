@@ -25,7 +25,7 @@ interface RemoteDataSource {
                 emit(ApiResult.Success(data))
             } catch (e: Exception) {
                 emit(ApiResult.Error(e))
-                Log.d("API_ERROR", e.message.toString())
+                Log.d("API_ERROR", e.toString())
             }
         }.flowOn(Dispatchers.IO)
     }
