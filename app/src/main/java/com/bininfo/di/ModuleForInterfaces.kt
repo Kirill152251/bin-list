@@ -4,21 +4,33 @@ import com.bininfo.data.BaseBinInfoRepository
 import com.bininfo.data.remote.RemoteDataSource
 import com.bininfo.domain.BinInfoRepository
 import com.bininfo.domain.GetBinInfoUseCase
+import com.bininfo.domain.InputValidationUseCase
+import com.bininfo.domain.ManageResources
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
 interface ModuleForInterfaces {
 
+    @Singleton
     @Binds
-    fun provideBinInfoRepository(implementation: BaseBinInfoRepository): BinInfoRepository
+    fun bindBinInfoRepository(impl: BaseBinInfoRepository): BinInfoRepository
 
     @Binds
-    fun provideRemoteDataSource(implementation: RemoteDataSource.Base): RemoteDataSource
+    fun bindRemoteDataSource(impl: RemoteDataSource.Base): RemoteDataSource
 
     @Binds
-    fun provideGetBinInfoUseCase(implementation: GetBinInfoUseCase.Base): GetBinInfoUseCase
+    fun bindGetBinInfoUseCase(impl: GetBinInfoUseCase.Base): GetBinInfoUseCase
+
+    @Binds
+    fun bindInputValidationUseCase(impl: InputValidationUseCase.Base): InputValidationUseCase
+
+    @Singleton
+    @Binds
+    fun bindResourceManager(impl: ManageResources.Base): ManageResources
 }
