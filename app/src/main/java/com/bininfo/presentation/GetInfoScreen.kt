@@ -45,8 +45,11 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                 val bin = editTextBin.text.toString()
                 viewModel.setEvent(GetInfoScreenEvent.ValidateInputAndGetBinInfo(bin))
             }
-            //TODO: implement button retry clickListener
-            //TODO: implement navigation to history screen button
+            buttonRetry.setOnClickListener {
+                val bin = editTextBin.text.toString()
+                viewModel.setEvent(GetInfoScreenEvent.ValidateInputAndGetBinInfo(bin))
+            }
+
         }
         collectSideEffect()
         lifecycleScope.launch {
