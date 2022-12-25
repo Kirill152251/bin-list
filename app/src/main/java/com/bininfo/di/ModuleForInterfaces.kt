@@ -25,6 +25,9 @@ interface ModuleForInterfaces {
     @Binds
     fun bindInputValidationUseCase(impl: InputValidationUseCase.Base): InputValidationUseCase
 
+    @Binds
+    fun bindSaveBinInfoForHistoryUseCase(impl: SaveBinInfoForHistoryUseCase.Base): SaveBinInfoForHistoryUseCase
+
     @Singleton
     @Binds
     fun bindResourceManager(impl: ManageResources.Base): ManageResources
