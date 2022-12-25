@@ -16,4 +16,6 @@
     <string name="no_internet_error_msg">Check internet connection</string>
     <string name="error_server_is_not_response">Server is not response. Try later</string>
     <string name="unknown_error">Something went wrong</string>
+    <string name="history">History</string>
+    <string name="empty_history">Empty history</string>
 </resources>
