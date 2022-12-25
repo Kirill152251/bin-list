@@ -7,8 +7,9 @@ data class BinInfoResponse(
     val brand: String,
     val country: Country
 ) {
-    fun toDomainModal(): BinInfo {
+    fun toDomainModal(bin: String): BinInfo {
         return BinInfo(
+            bin = bin,
             brand = brand,
             bank = bank.name,
             bankSite = bank.url,

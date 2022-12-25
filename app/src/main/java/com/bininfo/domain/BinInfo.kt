@@ -1,6 +1,7 @@
 package com.bininfo.domain
 
 data class BinInfo(
+    val bin: String,
     val brand: String,
     val bank: String,
     val bankSite: String,

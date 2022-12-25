@@ -21,7 +21,7 @@ interface RemoteDataSource {
         override fun fetchBinInfo(bin: String): Flow<ApiResult<BinInfo>> = flow {
             emit(ApiResult.Loading)
             try {
-                val data = service.getBinInfo(bin).toDomainModal()
+                val data = service.getBinInfo(bin).toDomainModal(bin)
                 emit(ApiResult.Success(data))
             } catch (e: Exception) {
                 emit(ApiResult.Error(e))
