@@ -63,6 +63,13 @@ dependencies {
 
     //Fragments
     implementation("androidx.fragment:fragment-ktx:1.5.5")
+
+    //Room
+    def room_version = "2.4.3"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
 }
 
 kapt {
