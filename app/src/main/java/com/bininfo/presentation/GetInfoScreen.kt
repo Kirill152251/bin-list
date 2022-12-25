@@ -53,7 +53,12 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                 val bin = editTextBin.text.toString()
                 viewModel.setEvent(GetInfoScreenEvent.ValidateInputAndGetBinInfo(bin))
             }
-
+            buttonNavigateToHistory.setOnClickListener {
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container_view, HistoryScreen())
+                    .addToBackStack("TAG")
+                    .commit()
+            }
         }
         collectSideEffect()
         lifecycleScope.launch {
