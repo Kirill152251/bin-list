@@ -13,13 +13,31 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_bin_title"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bin_code"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_bin_value"
+            style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toEndOf="@+id/text_bin_title"
+            app:layout_constraintTop_toTopOf="@+id/text_bin_title"
+            tools:text="47619384" />
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_brand_title"
             style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/brand"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/text_bin_title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_brand_value"
@@ -104,14 +122,15 @@
             tools:text="Vakanda" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_save"
+            android:id="@+id/button_delete"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginTop="@dimen/middle_margin"
+            android:layout_marginEnd="@dimen/middle_margin"
             app:icon="@drawable/ic_delete"
             app:iconTint="?attr/colorPrimary"
-            app:layout_constraintBottom_toTopOf="@+id/text_bank_title"
+            app:layout_constraintBottom_toBottomOf="@+id/text_bin_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
