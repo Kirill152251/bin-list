@@ -7,15 +7,15 @@ import androidx.room.RoomDatabase
 import com.bininfo.domain.BIN_INFO_DATABASE
 
 @Database(entities = [BinInfoEntity::class], version = 1)
-abstract class BinInfoDatabase: RoomDatabase() {
+abstract class HistoryDatabase: RoomDatabase() {
 
     abstract fun binInfoDao(): BinInfoDao
 
     companion object {
         @Volatile
-        private var instance: BinInfoDatabase? = null
+        private var instance: HistoryDatabase? = null
 
-        fun getDatabase(context: Context): BinInfoDatabase =
+        fun getDatabase(context: Context): HistoryDatabase =
             instance ?: synchronized(this) {
                 instance ?: buildDatabase(context).also {
                     instance = it
@@ -23,7 +23,7 @@ abstract class BinInfoDatabase: RoomDatabase() {
             }
 
         private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context, BinInfoDatabase::class.java, BIN_INFO_DATABASE)
+            Room.databaseBuilder(context, HistoryDatabase::class.java, BIN_INFO_DATABASE)
                 .fallbackToDestructiveMigration()
                 .build()
     }

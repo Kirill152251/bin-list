@@ -1,7 +1,8 @@
-package com.bininfo.data.remote
+package com.bininfo.domain
 
 import android.util.Log
-import com.bininfo.domain.BinInfo
+import com.bininfo.data.remote.ApiResult
+import com.bininfo.data.remote.BinInfoService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

@@ -11,14 +11,14 @@ import kotlinx.coroutines.flow.Flow
 interface BinInfoDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(binInfo: BinInfoEntity)
+    fun insert(binInfo: BinInfoEntity)
 
     @Delete
-    suspend fun delete(binInfo: BinInfoEntity)
+    fun delete(binInfo: BinInfoEntity)
 
     @Query("DELETE FROM BIN_DB")
-    suspend fun deleteHistory()
+    fun deleteHistory()
 
     @Query("SELECT * FROM BIN_DB")
-    suspend fun getBinInfo(): Flow<List<BinInfoEntity>>
+    fun getBinInfo(): Flow<List<BinInfoEntity>>
 }

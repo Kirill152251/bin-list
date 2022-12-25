@@ -2,17 +2,16 @@ package com.bininfo.domain
 
 import com.bininfo.data.cache.BinInfoEntity
 
-data class BinInfo(
+data class BinInfoHistory(
     val bin: String,
     val brand: String,
     val bank: String,
     val bankSite: String,
     val bankPhone: String,
     val country: String,
-    val lat: Int,
-    val lon: Int
+    val inputDate: String,
 ) {
-    fun toDataBaseEntity(inputDate: String): BinInfoEntity {
+    fun toDataBaseEntity(): BinInfoEntity {
         return BinInfoEntity(
             bin = bin,
             brand = brand,
@@ -20,8 +19,6 @@ data class BinInfo(
             bankSite = bankSite,
             bankPhone = bankPhone,
             county = country,
-            lat = lat,
-            lon = lon,
             inputDate = inputDate
         )
     }

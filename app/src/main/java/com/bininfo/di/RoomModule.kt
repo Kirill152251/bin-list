@@ -1,7 +1,7 @@
 package com.bininfo.di
 
 import android.content.Context
-import com.bininfo.data.cache.BinInfoDatabase
+import com.bininfo.data.cache.HistoryDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,10 +15,10 @@ class RoomModule {
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext context: Context) =
-        BinInfoDatabase.getDatabase(context)
+        HistoryDatabase.getDatabase(context)
 
     @Provides
     @Singleton
-    fun provideCurrentWeatherDao(binInfoDatabase: BinInfoDatabase) =
-        binInfoDatabase.binInfoDao()
+    fun provideCurrentWeatherDao(historyDatabase: HistoryDatabase) =
+        historyDatabase.binInfoDao()
 }

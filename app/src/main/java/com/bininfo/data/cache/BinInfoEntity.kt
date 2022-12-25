@@ -3,7 +3,7 @@ package com.bininfo.data.cache
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.bininfo.domain.BIN_INFO_DATABASE
-import com.bininfo.domain.BinInfo
+import com.bininfo.domain.BinInfoHistory
 
 @Entity(tableName = BIN_INFO_DATABASE)
 data class BinInfoEntity(
@@ -15,19 +15,16 @@ data class BinInfoEntity(
     val bankSite: String,
     val bankPhone: String,
     val county: String,
-    val lon: Int,
-    val lat: Int,
 ) {
-    fun toDomainModel(): BinInfo {
-        return BinInfo(
+    fun toBinInfoHistoryModel(): BinInfoHistory {
+        return BinInfoHistory(
             bin = bin,
             brand = brand,
             bank = bank,
             bankSite = bankSite,
             bankPhone = bankPhone,
             country = county,
-            lat = lat,
-            lon = lon
+            inputDate = inputDate
         )
     }
 }

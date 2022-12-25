@@ -1,15 +1,10 @@
 package com.bininfo.di
 
 import com.bininfo.data.BaseBinInfoRepository
-import com.bininfo.data.remote.RemoteDataSource
-import com.bininfo.domain.BinInfoRepository
-import com.bininfo.domain.GetBinInfoUseCase
-import com.bininfo.domain.InputValidationUseCase
-import com.bininfo.domain.ManageResources
+import com.bininfo.domain.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -33,4 +28,8 @@ interface ModuleForInterfaces {
     @Singleton
     @Binds
     fun bindResourceManager(impl: ManageResources.Base): ManageResources
+
+    @Singleton
+    @Binds
+    fun bindCacheDataSource(impl: RemoteDataSource): CacheDataSource
 }
