@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface BinInfoDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(binInfo: BinInfoEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(binInfo: BinInfoEntity)
 
     @Delete
     fun delete(binInfo: BinInfoEntity)

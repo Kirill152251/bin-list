@@ -12,7 +12,7 @@ class RoomCacheDataSource @Inject constructor(
     private val dao: BinInfoDao
 ): CacheDataSource {
 
-    override fun insertBinInfo(binInfo: BinInfoHistory) {
+    override suspend fun insertBinInfo(binInfo: BinInfoHistory) {
         dao.insert(binInfo.toDataBaseEntity())
     }
 

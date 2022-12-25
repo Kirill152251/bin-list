@@ -1,6 +1,7 @@
 package com.bininfo.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.bininfo.R
 import com.bininfo.databinding.FragmentGetInfoScreenBinding
+import com.bininfo.domain.BinInfoHistory
 import com.bininfo.presentation.view_models.GetInfoScreenEffect
 import com.bininfo.presentation.view_models.GetInfoScreenEvent
 import com.bininfo.presentation.view_models.GetInfoScreenState
@@ -21,6 +23,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.net.UnknownHostException
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
 class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
@@ -105,11 +109,29 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                                 textBankPhoneValue.text = state.binInfo.bankPhone
                                 textCountryValue.text = state.binInfo.country
                             }
+                            saveBinInfoIntoHistory()
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun saveBinInfoIntoHistory() {
+
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
+        val currentDate = LocalDateTime.now().format(formatter)
+
+        val binHistory = BinInfoHistory(
+            bin = binding.editTextBin.text.toString(),
+            brand = binding.textBrandValue.text.toString(),
+            inputDate = currentDate,
+            bank = binding.textBankValue.text.toString(),
+            bankSite = binding.textBankSiteValue.text.toString(),
+            bankPhone = binding.textBankPhoneValue.text.toString(),
+            country = binding.textCountryValue.text.toString()
+        )
+        viewModel.setEvent(GetInfoScreenEvent.SaveForHistory(binHistory))
     }
 
     private fun collectSideEffect() {

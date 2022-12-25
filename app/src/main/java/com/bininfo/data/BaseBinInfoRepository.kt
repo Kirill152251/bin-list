@@ -16,7 +16,7 @@ class BaseBinInfoRepository @Inject constructor(
         return remoteDataSource.fetchBinInfo(bin)
     }
 
-    override fun insertBinInfoIntoDb(binInfoHistory: BinInfoHistory) {
+    override suspend fun insertBinInfoIntoDb(binInfoHistory: BinInfoHistory) {
         cacheDataSource.insertBinInfo(binInfoHistory)
     }
 

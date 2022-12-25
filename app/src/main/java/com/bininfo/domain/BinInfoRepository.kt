@@ -7,7 +7,7 @@ interface BinInfoRepository {
 
     fun getBinInfo(bin: String) : Flow<ApiResult<BinInfo>>
 
-    fun insertBinInfoIntoDb(binInfoHistory: BinInfoHistory)
+    suspend fun insertBinInfoIntoDb(binInfoHistory: BinInfoHistory)
 
     fun deleteBinInfoFromDb(binInfoHistory: BinInfoHistory)
 

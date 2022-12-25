@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface CacheDataSource {
 
-    fun insertBinInfo(binInfo: BinInfoHistory)
+    suspend fun insertBinInfo(binInfo: BinInfoHistory)
 
     fun deleteBinInfo(binInfo: BinInfoHistory)
 

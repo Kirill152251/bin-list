@@ -4,12 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bininfo.R
 import com.bininfo.data.remote.ApiResult
-import com.bininfo.domain.BinInfo
-import com.bininfo.domain.GetBinInfoUseCase
-import com.bininfo.domain.InputValidationUseCase
+import com.bininfo.domain.*
 import com.bininfo.domain.InputValidationUseCase.InputError.*
-import com.bininfo.domain.ManageResources
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -18,6 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class GetInfoScreenViewModel @Inject constructor(
     private val getBinInfoUseCase: GetBinInfoUseCase,
+    private val saveBinInfoForHistoryUseCase: SaveBinInfoForHistoryUseCase,
     private val inputValidationUseCase: InputValidationUseCase,
     private val stringResource: ManageResources
 ) : ViewModel() {
@@ -43,8 +42,17 @@ class GetInfoScreenViewModel @Inject constructor(
                     is GetInfoScreenEvent.ValidateInputAndGetBinInfo -> {
                         validateAndGetBinInfo(event.bin)
                     }
+                    is GetInfoScreenEvent.SaveForHistory -> {
+                        saveForHistory(event.binInfoHistory)
+                    }
                 }
             }
+        }
+    }
+
+    private fun saveForHistory(binInfoHistory: BinInfoHistory) {
+        viewModelScope.launch(Dispatchers.IO) {
+            saveBinInfoForHistoryUseCase.save(binInfoHistory)
         }
     }
 
@@ -109,6 +117,7 @@ sealed class GetInfoScreenState {
 sealed class GetInfoScreenEvent {
     data class ValidateInputAndGetBinInfo(val bin: String) : GetInfoScreenEvent()
     object OnRetry : GetInfoScreenEvent()
+    data class SaveForHistory(val binInfoHistory: BinInfoHistory): GetInfoScreenEvent()
 }
 
 sealed class GetInfoScreenEffect {

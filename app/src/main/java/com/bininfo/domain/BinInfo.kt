@@ -20,8 +20,6 @@ data class BinInfo(
             bankSite = bankSite,
             bankPhone = bankPhone,
             county = country,
-            lat = lat,
-            lon = lon,
             inputDate = inputDate
         )
     }

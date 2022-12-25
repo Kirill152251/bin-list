@@ -1,6 +1,7 @@
 package com.bininfo.di
 
 import com.bininfo.data.BaseBinInfoRepository
+import com.bininfo.data.cache.RoomCacheDataSource
 import com.bininfo.domain.*
 import dagger.Binds
 import dagger.Module
@@ -34,5 +35,5 @@ interface ModuleForInterfaces {
 
     @Singleton
     @Binds
-    fun bindCacheDataSource(impl: RemoteDataSource): CacheDataSource
+    fun bindCacheDataSource(impl: RoomCacheDataSource): CacheDataSource
 }
