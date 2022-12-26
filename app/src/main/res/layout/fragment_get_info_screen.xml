@@ -46,17 +46,17 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_error_msg"
+        style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:layout_marginBottom="@dimen/middle_margin"
         android:gravity="center"
         android:paddingHorizontal="@dimen/middle_margin"
-        android:layout_marginBottom="@dimen/middle_margin"
         android:text="@string/unknown_error"
-        style="@style/Widget.BinInfo.TextView.GetInfoScreenTitles"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/button_retry"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_retry"
@@ -172,9 +172,9 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_bank_site_value"
             style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
-            android:autoLink="web"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:autoLink="web"
             app:layout_constraintStart_toEndOf="@+id/text_bank_site_title"
             app:layout_constraintTop_toTopOf="@+id/text_bank_site_title"
             tools:text="www.bank.com" />
@@ -191,9 +191,9 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_bank_phone_value"
             style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
-            android:autoLink="phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:autoLink="phone"
             app:layout_constraintStart_toEndOf="@+id/text_bank_phone_title"
             app:layout_constraintTop_toTopOf="@+id/text_bank_phone_title"
             tools:text="+342151513" />
@@ -210,9 +210,9 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_country_value"
             style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
-            android:textColor="?attr/colorOnSecondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/colorOnSecondary"
             app:layout_constraintStart_toEndOf="@+id/text_country_title"
             app:layout_constraintTop_toTopOf="@+id/text_country_title"
             tools:text="Vakanda" />

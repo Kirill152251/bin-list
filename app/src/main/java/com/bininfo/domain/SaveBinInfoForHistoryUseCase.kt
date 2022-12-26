@@ -8,7 +8,7 @@ interface SaveBinInfoForHistoryUseCase {
 
     class Base @Inject constructor(
         private val repository: BinInfoRepository
-    ): SaveBinInfoForHistoryUseCase {
+    ) : SaveBinInfoForHistoryUseCase {
         override suspend fun save(binInfoHistory: BinInfoHistory) {
             repository.insertBinInfoIntoDb(binInfoHistory)
         }

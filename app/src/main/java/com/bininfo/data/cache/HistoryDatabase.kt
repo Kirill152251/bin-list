@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.bininfo.domain.BIN_INFO_DATABASE
 
 @Database(entities = [BinInfoEntity::class], version = 1)
-abstract class HistoryDatabase: RoomDatabase() {
+abstract class HistoryDatabase : RoomDatabase() {
 
     abstract fun binInfoDao(): BinInfoDao
 

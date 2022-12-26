@@ -10,7 +10,7 @@ import javax.inject.Singleton
 @Singleton
 class RoomCacheDataSource @Inject constructor(
     private val dao: BinInfoDao
-): CacheDataSource {
+) : CacheDataSource {
 
     override suspend fun insertBinInfo(binInfo: BinInfoHistory) {
         dao.insert(binInfo.toDataBaseEntity())

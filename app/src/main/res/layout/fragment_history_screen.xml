@@ -26,8 +26,8 @@
             android:id="@+id/text_contact_name"
             style="@style/Widget.BinInfo.TextView.ToolbarTitle"
             android:layout_width="wrap_content"
-            android:paddingHorizontal="12dp"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="12dp"
             android:text="@string/history" />
 
         <com.google.android.material.button.MaterialButton

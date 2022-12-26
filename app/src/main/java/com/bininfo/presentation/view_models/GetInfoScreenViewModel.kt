@@ -120,7 +120,6 @@ class GetInfoScreenViewModel @Inject constructor(
         val effectValue = builder()
         viewModelScope.launch { _effect.send(effectValue) }
     }
-
 }
 
 sealed class GetInfoScreenState {

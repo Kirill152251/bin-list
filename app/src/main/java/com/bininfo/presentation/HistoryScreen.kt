@@ -60,7 +60,7 @@ class HistoryScreen : Fragment(R.layout.fragment_history_screen) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { state ->
                     when (state) {
-                        HistoryScreenState.Idle -> { }
+                        HistoryScreenState.Idle -> {}
                         is HistoryScreenState.BinInfoHistoryState -> {
                             binding.textNoHistory.isVisible = false
                             state.binInfo.collect {
@@ -68,7 +68,7 @@ class HistoryScreen : Fragment(R.layout.fragment_history_screen) {
                                 if (it.isEmpty()) {
                                     binding.apply {
                                         textNoHistory.isVisible = true
-                                        recyclerView.isVisible =false
+                                        recyclerView.isVisible = false
                                     }
                                 }
                             }

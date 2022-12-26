@@ -23,7 +23,7 @@ import com.bininfo.presentation.view_models.GetInfoScreenEffect
 import com.bininfo.presentation.view_models.GetInfoScreenEvent
 import com.bininfo.presentation.view_models.GetInfoScreenState
 import com.bininfo.presentation.view_models.GetInfoScreenViewModel
-import com.google.android.material.R.*
+import com.google.android.material.R.attr
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import retrofit2.HttpException

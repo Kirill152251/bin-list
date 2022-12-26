@@ -1,7 +1,7 @@
 package com.bininfo.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bininfo.R
 import dagger.hilt.android.AndroidEntryPoint
 

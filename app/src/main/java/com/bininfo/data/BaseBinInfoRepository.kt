@@ -10,7 +10,7 @@ import javax.inject.Singleton
 class BaseBinInfoRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val cacheDataSource: CacheDataSource
-): BinInfoRepository {
+) : BinInfoRepository {
 
     override fun getBinInfo(bin: String): Flow<ApiResult<BinInfo>> {
         return remoteDataSource.fetchBinInfo(bin)

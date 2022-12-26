@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface BinInfoRepository {
 
-    fun getBinInfo(bin: String) : Flow<ApiResult<BinInfo>>
+    fun getBinInfo(bin: String): Flow<ApiResult<BinInfo>>
 
     suspend fun insertBinInfoIntoDb(binInfoHistory: BinInfoHistory)
 
