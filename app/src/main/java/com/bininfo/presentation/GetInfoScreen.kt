@@ -1,7 +1,11 @@
 package com.bininfo.presentation
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.UnderlineSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,17 +18,17 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.bininfo.R
 import com.bininfo.databinding.FragmentGetInfoScreenBinding
-import com.bininfo.domain.BinInfoHistory
+import com.bininfo.domain.getColorFromAttr
 import com.bininfo.presentation.view_models.GetInfoScreenEffect
 import com.bininfo.presentation.view_models.GetInfoScreenEvent
 import com.bininfo.presentation.view_models.GetInfoScreenState
 import com.bininfo.presentation.view_models.GetInfoScreenViewModel
+import com.google.android.material.R.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.net.UnknownHostException
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import java.util.*
 
 @AndroidEntryPoint
 class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
@@ -112,7 +116,31 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                                 textBankValue.text = state.binInfo.bank
                                 textBankSiteValue.text = state.binInfo.bankSite
                                 textBankPhoneValue.text = state.binInfo.bankPhone
-                                textCountryValue.text = state.binInfo.country
+
+                                textCountryValue.setOnClickListener {
+                                    val uri = String.format(
+                                        Locale.ENGLISH,
+                                        "geo:%f,%f",
+                                        state.binInfo.lat.toFloat(),
+                                        state.binInfo.lon.toFloat()
+                                    )
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+                                    startActivity(intent)
+                                }
+                                val spannableString = SpannableString(state.binInfo.country)
+                                spannableString.setSpan(
+                                    UnderlineSpan(),
+                                    0,
+                                    spannableString.length,
+                                    0
+                                )
+                                spannableString.setSpan(
+                                    ForegroundColorSpan(requireActivity().getColorFromAttr(attr.colorSecondary)),
+                                    0,
+                                    spannableString.length,
+                                    0
+                                )
+                                textCountryValue.text = spannableString
                             }
                         }
                     }

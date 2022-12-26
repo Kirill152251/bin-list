@@ -122,7 +122,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_get_info"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_brand_title"
@@ -172,6 +172,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_bank_site_value"
             style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
+            android:autoLink="web"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/text_bank_site_title"
@@ -190,6 +191,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_bank_phone_value"
             style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
+            android:autoLink="phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/text_bank_phone_title"
@@ -208,6 +210,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_country_value"
             style="@style/Widget.BinInfo.TextView.GetInfoScreenValues"
+            android:textColor="?attr/colorOnSecondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/text_country_title"
