@@ -46,6 +46,12 @@ class HistoryScreen : Fragment(R.layout.fragment_history_screen) {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         viewModel.setEvent(HistoryScreenEvent.FetchHistory)
 
+        binding.apply {
+            buttonNavigateBack.setOnClickListener {
+                requireActivity().onBackPressedDispatcher.onBackPressed()
+            }
+        }
+
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { state ->
