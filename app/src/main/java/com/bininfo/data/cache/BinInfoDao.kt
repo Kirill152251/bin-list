@@ -14,10 +14,10 @@ interface BinInfoDao {
     suspend fun insert(binInfo: BinInfoEntity)
 
     @Delete
-    fun delete(binInfo: BinInfoEntity)
+    suspend fun delete(binInfo: BinInfoEntity)
 
     @Query("DELETE FROM BIN_DB")
-    fun deleteHistory()
+    suspend fun deleteHistory()
 
     @Query("SELECT * FROM BIN_DB")
     fun getBinInfo(): Flow<List<BinInfoEntity>>

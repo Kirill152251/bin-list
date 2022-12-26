@@ -20,7 +20,7 @@ class BaseBinInfoRepository @Inject constructor(
         cacheDataSource.insertBinInfo(binInfoHistory)
     }
 
-    override fun deleteBinInfoFromDb(binInfoHistory: BinInfoHistory) {
+    override suspend fun deleteBinInfoFromDb(binInfoHistory: BinInfoHistory) {
         cacheDataSource.deleteBinInfo(binInfoHistory)
     }
 
@@ -28,7 +28,7 @@ class BaseBinInfoRepository @Inject constructor(
         return cacheDataSource.getAllBinInfo()
     }
 
-    override fun clearHistory() {
+    override suspend fun clearHistory() {
         cacheDataSource.deleteAllBinInfo()
     }
 }

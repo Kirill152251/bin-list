@@ -6,9 +6,9 @@ interface CacheDataSource {
 
     suspend fun insertBinInfo(binInfo: BinInfoHistory)
 
-    fun deleteBinInfo(binInfo: BinInfoHistory)
+    suspend fun deleteBinInfo(binInfo: BinInfoHistory)
 
     fun getAllBinInfo(): Flow<List<BinInfoHistory>>
 
-    fun deleteAllBinInfo()
+    suspend fun deleteAllBinInfo()
 }

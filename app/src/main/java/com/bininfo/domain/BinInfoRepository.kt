@@ -9,9 +9,9 @@ interface BinInfoRepository {
 
     suspend fun insertBinInfoIntoDb(binInfoHistory: BinInfoHistory)
 
-    fun deleteBinInfoFromDb(binInfoHistory: BinInfoHistory)
+    suspend fun deleteBinInfoFromDb(binInfoHistory: BinInfoHistory)
 
     fun getBinHistory(): Flow<List<BinInfoHistory>>
 
-    fun clearHistory()
+    suspend fun clearHistory()
 }

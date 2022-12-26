@@ -16,7 +16,7 @@ class RoomCacheDataSource @Inject constructor(
         dao.insert(binInfo.toDataBaseEntity())
     }
 
-    override fun deleteBinInfo(binInfo: BinInfoHistory) {
+    override suspend fun deleteBinInfo(binInfo: BinInfoHistory) {
         dao.delete(binInfo.toDataBaseEntity())
     }
 
@@ -28,7 +28,7 @@ class RoomCacheDataSource @Inject constructor(
         }
     }
 
-    override fun deleteAllBinInfo() {
+    override suspend fun deleteAllBinInfo() {
         dao.deleteHistory()
     }
 }
