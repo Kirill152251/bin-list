@@ -114,29 +114,11 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                                 textBankPhoneValue.text = state.binInfo.bankPhone
                                 textCountryValue.text = state.binInfo.country
                             }
-                            saveBinInfoIntoHistory()
                         }
                     }
                 }
             }
         }
-    }
-
-    private fun saveBinInfoIntoHistory() {
-
-        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
-        val currentDate = LocalDateTime.now().format(formatter)
-
-        val binHistory = BinInfoHistory(
-            bin = binding.editTextBin.text.toString(),
-            brand = binding.textBrandValue.text.toString(),
-            inputDate = currentDate,
-            bank = binding.textBankValue.text.toString(),
-            bankSite = binding.textBankSiteValue.text.toString(),
-            bankPhone = binding.textBankPhoneValue.text.toString(),
-            country = binding.textCountryValue.text.toString()
-        )
-        viewModel.setEvent(GetInfoScreenEvent.SaveForHistory(binHistory))
     }
 
     private fun collectSideEffect() {

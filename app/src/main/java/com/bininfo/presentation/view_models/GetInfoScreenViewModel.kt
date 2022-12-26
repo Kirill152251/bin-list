@@ -12,6 +12,8 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @HiltViewModel
@@ -55,7 +57,7 @@ class GetInfoScreenViewModel @Inject constructor(
 
     private suspend fun validateAndGetBinInfo(bin: String) {
         when (inputValidationUseCase.isValid(bin)) {
-            NO_ERRORS -> getBinInfo(bin)
+            NO_ERRORS -> getBinInfoAndSavaInDatabase(bin)
             NOT_EIGHT_DIGITS -> setEffect {
                 GetInfoScreenEffect.ShowInputError(
                     stringResource.string(
@@ -76,7 +78,7 @@ class GetInfoScreenViewModel @Inject constructor(
         }
     }
 
-    private suspend fun getBinInfo(bin: String) {
+    private suspend fun getBinInfoAndSavaInDatabase(bin: String) {
         getBinInfoUseCase.getBinInfo(bin).collect { apiResult ->
             when (apiResult) {
                 is ApiResult.Error -> {
@@ -87,9 +89,26 @@ class GetInfoScreenViewModel @Inject constructor(
                 }
                 is ApiResult.Success -> {
                     _state.value = GetInfoScreenState.BinInfoState(apiResult.result)
+                    savaDataToDataBase(apiResult.result, bin)
                 }
             }
         }
+    }
+
+    private fun savaDataToDataBase(binInfo: BinInfo, bin: String) {
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
+        val currentDate = LocalDateTime.now().format(formatter)
+
+        val binHistory = BinInfoHistory(
+            bin = bin,
+            brand = binInfo.brand,
+            inputDate = currentDate,
+            bank = binInfo.bank,
+            bankSite = binInfo.bankSite,
+            bankPhone = binInfo.bankPhone,
+            country = binInfo.country
+        )
+        setEvent(GetInfoScreenEvent.SaveForHistory(binHistory))
     }
 
     fun setEvent(event: GetInfoScreenEvent) {
@@ -114,7 +133,7 @@ sealed class GetInfoScreenState {
 sealed class GetInfoScreenEvent {
     data class ValidateInputAndGetBinInfo(val bin: String) : GetInfoScreenEvent()
     object OnRetry : GetInfoScreenEvent()
-    data class SaveForHistory(val binInfoHistory: BinInfoHistory): GetInfoScreenEvent()
+    data class SaveForHistory(val binInfoHistory: BinInfoHistory) : GetInfoScreenEvent()
 }
 
 sealed class GetInfoScreenEffect {
