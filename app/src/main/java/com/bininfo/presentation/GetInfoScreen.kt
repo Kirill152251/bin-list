@@ -98,6 +98,10 @@ class GetInfoScreen : Fragment(R.layout.fragment_get_info_screen) {
                                     binding.textErrorMsg.text =
                                         getText(R.string.no_internet_error_msg)
                                 }
+                                is NullPointerException -> {
+                                    binding.textErrorMsg.text =
+                                        getText(R.string.no_data_error_msg)
+                                }
                             }
                             binding.apply {
                                 binInfoViews.isVisible = false
