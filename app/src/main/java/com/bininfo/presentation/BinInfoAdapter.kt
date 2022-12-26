@@ -17,7 +17,6 @@ class BinInfoAdapter(private val onDelete: (binInfoHistory: BinInfoHistory) -> U
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = RecycleViewItemBinding.inflate(inflater, parent, false)
-        binding.buttonDelete.setOnClickListener { onDelete }
         return ViewHolder(binding)
     }
 
@@ -31,6 +30,9 @@ class BinInfoAdapter(private val onDelete: (binInfoHistory: BinInfoHistory) -> U
             textBankPhoneValue.text = item.bankPhone
             textCountryValue.text = item.country
             textQueryDate.text = item.inputDate
+            buttonDelete.setOnClickListener {
+                onDelete(item)
+            }
         }
     }
 
