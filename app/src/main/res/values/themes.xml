@@ -30,4 +30,13 @@
         <item name="layout_constrainedWidth">true</item>
         <item name="android:layout_marginStart">4dp</item>
     </style>
+
+    <style name="RecyclerViewItemValues" parent="Widget.BinInfo.TextView.GetInfoScreenValues">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="RecyclerViewItemTitles" parent="Widget.BinInfo.TextView.GetInfoScreenTitles">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
 </resources>

@@ -26,7 +26,7 @@
             android:id="@+id/text_contact_name"
             style="@style/Widget.BinInfo.TextView.ToolbarTitle"
             android:layout_width="wrap_content"
-            android:paddingStart="12dp"
+            android:paddingHorizontal="12dp"
             android:layout_height="wrap_content"
             android:text="@string/history" />
 
@@ -36,7 +36,8 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="end"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/middle_margin"
+            android:paddingHorizontal="12dp"
             app:icon="@drawable/ic_delete" />
     </com.google.android.material.appbar.MaterialToolbar>
 
