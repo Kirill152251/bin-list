@@ -1,7 +1,6 @@
 package com.bininfo.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,14 +50,18 @@ class HistoryScreen : Fragment(R.layout.fragment_history_screen) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { state ->
                     when (state) {
+                        HistoryScreenState.Idle -> { }
                         is HistoryScreenState.BinInfoHistoryState -> {
                             binding.textNoHistory.isVisible = false
                             state.binInfo.collect {
                                 adapter.submitList(it)
+                                if (it.isEmpty()) {
+                                    binding.apply {
+                                        textNoHistory.isVisible = true
+                                        recyclerView.isVisible =false
+                                    }
+                                }
                             }
-                        }
-                        HistoryScreenState.EmptyHistory -> {
-                            binding.textNoHistory.isVisible = true
                         }
                     }
                 }

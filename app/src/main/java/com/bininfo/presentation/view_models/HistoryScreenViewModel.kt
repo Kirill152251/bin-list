@@ -1,5 +1,6 @@
 package com.bininfo.presentation.view_models
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bininfo.domain.BinInfoHistory
@@ -16,7 +17,7 @@ class HistoryScreenViewModel @Inject constructor(
     private val repository: BinInfoRepository
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow<HistoryScreenState>(HistoryScreenState.EmptyHistory)
+    private val _state = MutableStateFlow<HistoryScreenState>(HistoryScreenState.Idle)
     val state = _state.asStateFlow()
 
     private val _event = MutableSharedFlow<HistoryScreenEvent>()
@@ -38,7 +39,6 @@ class HistoryScreenViewModel @Inject constructor(
                         withContext(Dispatchers.IO) {
                             repository.clearHistory()
                         }
-                        _state.value = HistoryScreenState.EmptyHistory
                     }
                     is HistoryScreenEvent.DeleteItem -> {
                         withContext(Dispatchers.IO) {
@@ -57,7 +57,7 @@ class HistoryScreenViewModel @Inject constructor(
 }
 
 sealed class HistoryScreenState {
-    object EmptyHistory : HistoryScreenState()
+    object Idle : HistoryScreenState()
     data class BinInfoHistoryState(val binInfo: Flow<List<BinInfoHistory>>) : HistoryScreenState()
 }
 
