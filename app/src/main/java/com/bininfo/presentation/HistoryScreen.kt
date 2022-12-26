@@ -13,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bininfo.R
 import com.bininfo.databinding.FragmentHistoryScreenBinding
+import com.bininfo.domain.TAG
 import com.bininfo.presentation.view_models.HistoryScreenEvent
 import com.bininfo.presentation.view_models.HistoryScreenState
 import com.bininfo.presentation.view_models.HistoryScreenViewModel
@@ -51,7 +52,7 @@ class HistoryScreen : Fragment(R.layout.fragment_history_screen) {
                 requireActivity().onBackPressedDispatcher.onBackPressed()
             }
             buttonClearHistory.setOnClickListener {
-                viewModel.setEvent(HistoryScreenEvent.DeleteAllHistory)
+                CleanHistoryAlertDialog().show(childFragmentManager, TAG)
             }
         }
 

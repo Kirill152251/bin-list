@@ -19,4 +19,7 @@
     <string name="history">History</string>
     <string name="empty_history">Empty history</string>
     <string name="bin_code">BIN code:</string>
+    <string name="alert_dialog_title">Do you really want to clear history?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
