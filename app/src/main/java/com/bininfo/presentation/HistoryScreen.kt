@@ -50,6 +50,9 @@ class HistoryScreen : Fragment(R.layout.fragment_history_screen) {
             buttonNavigateBack.setOnClickListener {
                 requireActivity().onBackPressedDispatcher.onBackPressed()
             }
+            buttonClearHistory.setOnClickListener {
+                viewModel.setEvent(HistoryScreenEvent.DeleteAllHistory)
+            }
         }
 
         lifecycleScope.launch {

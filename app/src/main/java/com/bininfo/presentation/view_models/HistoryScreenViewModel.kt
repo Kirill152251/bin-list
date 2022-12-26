@@ -1,6 +1,5 @@
 package com.bininfo.presentation.view_models
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bininfo.domain.BinInfoHistory
